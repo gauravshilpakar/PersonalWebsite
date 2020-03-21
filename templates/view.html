@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+{% for item in values %}
+<p>Name: {{item.firstname}}, Email: {{item.email}} </p>
+{% endfor %}
+{% endblock %}
