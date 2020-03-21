@@ -142,7 +142,7 @@ class ImageView(ModelView):
         return current_user.is_authenticated and not current_user.is_anonymous
 
 
-admin.add_view(ModelView(user, db.session))
+admin.add_view(MyModelView(user, db.session))
 admin.add_view(ImageView(projects, db.session))
 
 ###########################################################################
