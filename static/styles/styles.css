@@ -4,10 +4,14 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
 
+
+html {
+    scroll-behavior: smooth;
+  }
 h1 {
     font-family: 'Roboto Condensed';
     text-transform: uppercase;
-    scroll-behavior: smooth;
+    
 }
 
 html {
@@ -85,7 +89,7 @@ span {
 
 @media screen and (min-width: 601px) {
     .navbar {
-        position: absolute;
+        position: fixed;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -94,6 +98,7 @@ span {
         right: 50%;
         transform: translate(-50%, -50%);
         width: 100%;
+    
     }
 }
 
