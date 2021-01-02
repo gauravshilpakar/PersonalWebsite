@@ -504,3 +504,10 @@ label.fname {
     border-top-right-radius: 0;
   }
   
+figcaption{
+    text-align: center;
+}
+
+#figc{
+    text-align: center;
+}

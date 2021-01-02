@@ -10,12 +10,32 @@
         Computer Engineering Student
         at Texas Tech University.
         I love
-        design and automation. Here is a list of stuff I work on a daily basis:
-        <ul>Python</ul>
-        <ul>Java</ul>
-        <ul>React</ul>
-        <ul>.NET Core (In Progress)</ul>
-        <ul>Machine Learning (In Progress)</ul>
+        design and automation. Here is a list of technoglogies I work with on a daily basis... <br>
+        <div class="technoglogies" style="display: flex;">
+            <ul><img src="https://img.icons8.com/wired/64/ffffff/cs.png" alt="C#" />
+                <figcaption id="figc"> C#</figcaption>
+            </ul>
+
+            <ul><img src="https://img.icons8.com/wired/64/ffffff/java-coffee-cup-logo.png" alt="Java" />
+                <figcaption id="figc"> Java</figcaption>
+            </ul>
+            <ul><img src="https://img.icons8.com/wired/64/ffffff/python.png" alt="Python" />
+                <figcaption id="figc"> Python</figcaption>
+            </ul>
+            <ul><img src="https://img.icons8.com/wired/64/ffffff/javascript-logo.png" alt="JavaScript" />
+                <figcaption id="figc"> JavaScript</figcaption>
+            </ul>
+            <ul><img src="https://img.icons8.com/ios/64/ffffff/mysql-logo.png" alt="MySQL" />
+                <figcaption id="figc"> MySQL</figcaption>
+            </ul>
+            <ul><img style="filter: grayscale(100%);" src="https://img.icons8.com/color/64/ffffff/firebase.png" />
+                <figcaption id="figc"> Firebase</figcaption>
+            </ul>
+            <ul><img style="filter: grayscale(100%); width: 64px; height: auto;"
+                    src="../static/icons/social-icon-google-cloud-1200-630.png" alt="GCloud">
+                <figcaption>GCloud</figcaption>
+            </ul>
+        </div>
         <button class="resumee" onclick="location.href = '../static/files/resume.pdf'; target='_blank'">Resume</button>
     </div>
 
@@ -38,7 +58,7 @@
                     {% endif %}
                 </div>
                 <div class="leenkscontainer">
-                    {%  if p['github'] %}
+                    {% if p['github'] %}
                     <a href={{ p['github'] }} target='_blank'><img class="leenks"
                             src="https://img.icons8.com/ios-glyphs/100/000000/github.png" /></a>
                     {% endif %}
@@ -73,10 +93,12 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea class="form-control" name="message" id="message"></textarea></div>
+                        <textarea class="form-control" name="message" id="message"></textarea>
+                    </div>
                     <div class="form-group">
                         <div class="col-md-6 button">
-                            <button class="btn btn-primary btn-block" type="submit">SEND!</button></div>
+                            <button class="btn btn-primary btn-block" type="submit">SEND!</button>
+                        </div>
                         <h2>
                             {% with messages = get_flashed_messages() %}
                             {% if messages %}
