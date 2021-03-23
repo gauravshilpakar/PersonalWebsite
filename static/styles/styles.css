@@ -31,7 +31,6 @@ body {
 
 
 
-
 p {
     text-align: center;
     font-size: 14px;
@@ -213,12 +212,13 @@ span {
     right: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    font-size: 6vw;
     font-family: 'Roboto Condensed';
     font-weight: 200;
-    letter-spacing: 20px;
+    letter-spacing: 30px;
 }
-
+.technologies ul{
+	padding:0 20px;
+}
 @media screen and (max-width: 600px) {
     .title {
         bottom: 20%;
