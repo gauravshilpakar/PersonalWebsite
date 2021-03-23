@@ -206,7 +206,7 @@ span {
 }
 
 .title {
-    bottom: 14vw;
+    bottom: 40vh;
     position: absolute;
     left: 50%;
     right: 50%;
@@ -266,12 +266,18 @@ span {
     }
 }
 
+.techicons img{
+	height: 60px;
+}
 @media screen and (max-width: 601px) {
     .body-container {
         font-family: 'IBM Plex Sans', sans-serif;
         text-align: justify;
         margin: 80px 40px 80px 40px;
     }
+	.techicons img{
+		height: 50px;
+	}
 }
 
 @media screen and (min-width: 601px) {
