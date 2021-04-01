@@ -235,13 +235,15 @@ def getInstagram():
     accessToken = f"{appid}|{clienttoken}"
     instaUrl = ["https://www.instagram.com/p/CMlX4uvMihH/?utm_source=ig_web_copy_link",
                 "https://www.instagram.com/p/CMgai9GM8Ki/?utm_source=ig_web_copy_link",
-                "https://www.instagram.com/p/CJ-GlJRMbQ5/?utm_source=ig_web_copy_link"
+                "https://www.instagram.com/p/CJ-GlJRMbQ5/?utm_source=ig_web_copy_link",
+                "https://www.instagram.com/p/CMB1WCXlQmZ/?utm_source=ig_web_copy_link",
+                "https://www.instagram.com/p/ByrUaO3F4pH/?utm_source=ig_web_copy_link",
+                "https://www.instagram.com/p/BUlkJ4_g6RH/?utm_source=ig_web_copy_link"
                 ]
-    maxwidth = "1080"
+    maxwidth = "2160"
     returnableContent = dict([])
     for url in instaUrl:
         oembedurl = f"https://graph.facebook.com/v10.0/instagram_oembed?url={url}&maxwidth={maxwidth}&fields=thumbnail_url%2Cauthor_name%2Cprovider_name%2Cprovider_url&access_token={accessToken}"
-        print(oembedurl)
         contents = urllib.request.urlopen(oembedurl).read()
         output = json.loads(contents)
         # neededHtml = output["html"]

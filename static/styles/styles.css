@@ -48,12 +48,25 @@ span {
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(white), to(black));
 }
 
-.emoji:hover{
+/* .emoji:hover{
 	font-size: 20px;
 	animation-timing-function:ease-in-out;
 	animation-duration: 2s;
-}
+} */
 
+.emoji{
+	text-decoration: none;
+    display: inline-block;
+    padding: 0px 1px;
+    transition: all .5s ease-in-out;
+    box-sizing: border-box;
+    box-shadow: inset 0 -2px 0 #007FFF;
+}
+.emoji:hover{
+	text-decoration: none;
+	box-shadow: inset 0 -55px 0 0 #007FFF;
+	color: white;
+}
 .footer {
     display: flex;
     align-items: center;
@@ -223,6 +236,10 @@ span {
     font-weight: 200;
     letter-spacing: 30px;
 }
+.technologies{
+	display: flex; flex-wrap: wrap;
+	justify-content: center;
+}
 .technologies ul{
 	padding:0 20px;
 }
@@ -266,7 +283,7 @@ span {
 @media screen and (min-width: 601px) {
     .body-container {
         font-family: 'IBM Plex Sans', sans-serif;
-        text-align: justify;
+        text-align: center;
         margin: 200px 5rem 200px 5rem;
     }
 }
@@ -275,9 +292,7 @@ span {
 	height: 60px;
 }
 @media screen and (max-width: 700px) {
-    .body-container {
-        font-family: 'IBM Plex Sans', sans-serif;
-        text-align: justify;
+    .body-container {        
         margin: 80px 40px 80px 40px;
     }
 	.techicons img{
@@ -382,7 +397,7 @@ ul li {
     background-repeat: no-repeat;
 }
 
-button {
+.resumee {
     margin-top: 40px;
     color: goldenrod;
     font-size: 20px;
@@ -394,13 +409,28 @@ button {
     border-color: goldenrod;
     transition: all .2s ease-in-out;
     cursor: pointer;
-    padding: 10px 20px 10px 20px;
+    
+
+	text-decoration: none;
+	color: goldenrod;
+	display: inline-block;
+	padding: 0px 1px;
+	transition: all .5s ease-in-out;
+	box-sizing: border-box;
+	box-shadow: inset 0 -2px 0 goldenrod;
+	padding: 10px 20px 10px 20px;
+
 }
 
-button:hover {
+.resumee:hover {
     background-color: goldenrod;
     color: aliceblue;
+	text-decoration: none;
+box-shadow: inset 0 -55px 0 0 goldenrod;
+/* color: white; */
+
 }
+
 
 .contactform {
     margin: 50px;
