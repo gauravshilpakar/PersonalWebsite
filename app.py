@@ -250,8 +250,6 @@ def getInstagram():
 
 
 if __name__ == "__main__":
-
     db.create_all()
-
     app.secret_key = "1a3de5vefsa52vdwa42evdc2234d3ddsas"
     app.run(debug=True)
