@@ -38,8 +38,8 @@ mail.init_app(app)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql+psycopg2://postgres:MHEECHA1lamo@localhost:5432/projects'
-# app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://sigjzxfjrhvcxz:d3c589e50670a2c7b2dd3fb1b76db9d4eb3dc2eda9b2b2a45770a116d078e595@ec2-18-209-187-54.compute-1.amazonaws.com:5432/d9beeu0impht4s"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://sigjzxfjrhvcxz:d3c589e50670a2c7b2dd3fb1b76db9d4eb3dc2eda9b2b2a45770a116d078e595@ec2-18-209-187-54.compute-1.amazonaws.com:5432/d9beeu0impht4s"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
 
 ###########################################################################
 # DATABASE CLASSES
