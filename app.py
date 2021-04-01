@@ -1,18 +1,17 @@
 import os
 import os.path as op
-from os.path import dirname, join, realpath
-
-from flask import (Flask, flash, redirect, render_template, request, url_for)
+import json
+import urllib
+from dotenv import load_dotenv
+from markupsafe import Markup
+from flask import Flask, flash, redirect, render_template, request, url_for
 from flask_admin import Admin, form
-from flask_admin.contrib import rediscli, sqla
 from flask_admin.contrib.sqla import ModelView
-from flask_admin.form import rules
 from flask_login import LoginManager, UserMixin
 from flask_login.utils import current_user, login_user, logout_user
-from flask_mail import Mail, Message
+from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 from jinja2 import Markup
-from sqlalchemy.event import listens_for
 
 file_path = op.join(op.dirname(__file__), './static/files')
 try:
@@ -26,20 +25,21 @@ db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.init_app(app)
 admin = Admin(app)
-app.secret_key = "mailserver"
+load_dotenv()
 
+
+app.secret_key = "mailserver"
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
 app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = 'rasp.pi98@gmail.com'
-app.config["MAIL_PASSWORD"] = 'MHEECHA8lamo'
 
 mail = Mail(app)
 mail.init_app(app)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql+psycopg2://postgres:MHEECHA1lamo@localhost:5432/projects'
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://sigjzxfjrhvcxz:d3c589e50670a2c7b2dd3fb1b76db9d4eb3dc2eda9b2b2a45770a116d078e595@ec2-18-209-187-54.compute-1.amazonaws.com:5432/d9beeu0impht4s"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://sigjzxfjrhvcxz:d3c589e50670a2c7b2dd3fb1b76db9d4eb3dc2eda9b2b2a45770a116d078e595@ec2-18-209-187-54.compute-1.amazonaws.com:5432/d9beeu0impht4s"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
 
 ###########################################################################
 # DATABASE CLASSES
@@ -163,7 +163,7 @@ def login():
             return render_template("login.html")
         else:
             login_user(us)
-            return redirect(url_for("home")+"admin")
+            return redirect(url_for("home") + "admin")
     else:
         return render_template("login.html")
 
@@ -177,41 +177,41 @@ def logout():
 
 @app.route('/')
 def home():
-    return render_template("home.html", title="GAURAV SHILPAKAR", projects=db_projects())
+    return render_template("home.html", title="GAURAV SHILPAKAR", projects=db_projects(), instagram=getInstagram())
 
 
 @app.route('/contact/', methods=["POST", "GET"])
 def contact():
     if request.method == "POST":
-        firstName = request.form["firstName"]
-        lastName = request.form["lastName"]
-        email = request.form["email"]
-        subject = request.form["subject"]
-        message = request.form["message"]
+        # firstName = request.form["firstName"]
+        # lastName = request.form["lastName"]
+        # email = request.form["email"]
+        # subject = request.form["subject"]
+        # message = request.form["message"]
 
-        msg = Message(subject, sender=email, recipients=[
-                      "gaurav.shilpakar@gmail.com"])
-        msg.body = f"""
-        From: <{email}>
-        Subject: <{subject}>
-        Message: 
-        {message}
-        """
-        mail.send(msg)
-        flash("Message Delivered!")
+        # msg = Message(subject, sender=email, recipients=[
+        #               "gaurav.shilpakar@gmail.com"])
+        # msg.body = f"""
+        # From: <{email}>
+        # Subject: <{subject}>
+        # Message:
+        # {message}
+        # """
+        # mail.send(msg)
+        # flash("Message Delivered!")
 
-        u = user(firstName=firstName,
-                 lastName=lastName,
-                 email=email,
-                 subject=subject,
-                 message=message)
-        db.session.add(u)
-        db.session.commit()
+        # u = user(firstName=firstName,
+        #          lastName=lastName,
+        #          email=email,
+        #          subject=subject,
+        #          message=message)
+        # db.session.add(u)
+        # db.session.commit()
 
-        print(u.firstName)
-        return redirect(url_for('home')+"#contact")
+        # print(u.firstName)
+        return redirect(url_for('home') + "#contact")
     else:
-        return redirect(url_for('home')+"#contact")
+        return redirect(url_for('home') + "#contact")
 
 
 @app.route("/api/")
@@ -225,7 +225,32 @@ def resume():
     return url_for('static', filename='resume.pdf')
 
 
+def getInstagram():
+    # oembedurl = "https://graph.facebook.com/v10.0/instagram_oembed?url={url}&access_token={accessToken}"
+
+    appid = os.environ.get("app-id")
+    clienttoken = os.environ.get("client-token")
+    # accessToken = "808654119739532|da05d1c4bf0d1c88a50a1b03ee70b066"
+    accessToken = f"{appid}|{clienttoken}"
+    instaUrl = ["https://www.instagram.com/p/CMlX4uvMihH/?utm_source=ig_web_copy_link",
+                "https://www.instagram.com/p/CMgai9GM8Ki/?utm_source=ig_web_copy_link",
+                "https://www.instagram.com/p/CJ-GlJRMbQ5/?utm_source=ig_web_copy_link"
+                ]
+    maxwidth = "1080"
+    returnableContent = dict([])
+    for url in instaUrl:
+        oembedurl = f"https://graph.facebook.com/v10.0/instagram_oembed?url={url}&maxwidth={maxwidth}&fields=thumbnail_url%2Cauthor_name%2Cprovider_name%2Cprovider_url&access_token={accessToken}"
+        print(oembedurl)
+        contents = urllib.request.urlopen(oembedurl).read()
+        output = json.loads(contents)
+        # neededHtml = output["html"]
+        neededHtml = output["thumbnail_url"]
+        returnableContent[url] = neededHtml
+    return returnableContent
+
+
 if __name__ == "__main__":
+
     db.create_all()
 
     app.secret_key = "1a3de5vefsa52vdwa42evdc2234d3ddsas"

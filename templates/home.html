@@ -76,10 +76,57 @@
 			{% endfor %}
 		</section>
 	</div>
-	<div id="contact" style="margin-top: 200px;">
-		<h1 class="titles">Contact .</h1>
 
-		<section class="portfolio-block hire-me">
+	<div style="margin-top: 200px;">
+		<h1 class="titles">Mm Hm .</h1>
+		<div>While I'm not behind the computer working on a project, I'm probably behind a camera snapping away. Check
+			them out!</div>
+
+		<style>
+			.instawrapper {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				grid-gap: 2%;
+			}
+
+			@media screen and (max-width: 700px) {
+				.instawrapper {
+					display: inline-block;
+				}
+			}
+
+			.instaimages {
+				pointer-events: none;
+				display: block;
+				padding: 10%;
+				background-color: white;
+				width: 100%;
+				height: auto;
+				margin-top: 20%;
+			}
+
+			.instalinks {
+				outline: 0;
+			}
+
+			.instalinks:hover {
+				border: none;
+			}
+		</style>
+
+		<div class="instawrapper">
+			{% for key in instagram.keys() %}
+			<a target='_blank' class=instalinks href="{{ key }}">
+				<img class="instaimages" src="{{ instagram[key] }}" alt="" srcset="">
+			</a>
+			{% endfor %}
+		</div>
+		<script async src="//platform.instagram.com/en_US/embeds.js\"></script>
+	</div>
+	<div style="margin-top: 200px;">
+		<h1 class="titles">Contact .</h1>
+		Hit me up! <a class="emoji" href="#">👉</a>
+		<!-- <section class="portfolio-block hire-me">
 			<div class="container">
 				<form action="{{ url_for('contact') }}" method="POST">
 					<div class="form-group formname"><label for="firstName" class="fname">FirstName</label>
@@ -118,13 +165,7 @@
 			</div>
 
 	</div>
-	</section>
-</div>
-
-
-
-
-
-<div class="push"></div>
-
-{% endblock %}
+	</section> -->
+	</div>
+	<div class="push"></div>
+	{% endblock %}

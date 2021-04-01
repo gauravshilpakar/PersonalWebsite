@@ -2,3 +2,5 @@ ven
 venv
 __pycache__
 .vscode
+.en
+*.db

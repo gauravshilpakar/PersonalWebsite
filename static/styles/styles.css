@@ -7,6 +7,7 @@
 
 html {
     scroll-behavior: smooth;
+	font-size: 18px;
   }
 h1 {
     font-family: 'Roboto Condensed';
@@ -33,7 +34,7 @@ body {
 
 p {
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 span {
@@ -45,6 +46,12 @@ span {
     height: 1px;
     background: black;
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(white), to(black));
+}
+
+.emoji:hover{
+	font-size: 20px;
+	animation-timing-function:ease-in-out;
+	animation-duration: 2s;
 }
 
 .footer {
@@ -260,14 +267,14 @@ span {
     .body-container {
         font-family: 'IBM Plex Sans', sans-serif;
         text-align: justify;
-        margin: 80px 160px 80px 160px;
+        margin: 200px 5rem 200px 5rem;
     }
 }
 
 .techicons img{
 	height: 60px;
 }
-@media screen and (max-width: 601px) {
+@media screen and (max-width: 700px) {
     .body-container {
         font-family: 'IBM Plex Sans', sans-serif;
         text-align: justify;
@@ -278,7 +285,7 @@ span {
 	}
 }
 
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 700px) {
 
     .fullname {
         font-size: 100px;
