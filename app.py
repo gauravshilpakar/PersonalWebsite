@@ -1,9 +1,9 @@
+import json
 import os
 import os.path as op
-import json
 import urllib
+
 from dotenv import load_dotenv
-from markupsafe import Markup
 from flask import Flask, flash, redirect, render_template, request, url_for
 from flask_admin import Admin, form
 from flask_admin.contrib.sqla import ModelView
@@ -12,6 +12,7 @@ from flask_login.utils import current_user, login_user, logout_user
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 from jinja2 import Markup
+from markupsafe import Markup
 
 file_path = op.join(op.dirname(__file__), './static/files')
 try:
@@ -38,7 +39,7 @@ mail.init_app(app)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql+psycopg2://postgres:MHEECHA1lamo@localhost:5432/projects'
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://sigjzxfjrhvcxz:d3c589e50670a2c7b2dd3fb1b76db9d4eb3dc2eda9b2b2a45770a116d078e595@ec2-18-209-187-54.compute-1.amazonaws.com:5432/d9beeu0impht4s"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://sigjzxfjrhvcxz:d3c589e50670a2c7b2dd3fb1b76db9d4eb3dc2eda9b2b2a45770a116d078e595@ec2-18-209-187-54.compute-1.amazonaws.com:5432/d9beeu0impht4s"
 # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
 
 ###########################################################################
