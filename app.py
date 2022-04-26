@@ -11,7 +11,6 @@ from flask_login import LoginManager, UserMixin
 from flask_login.utils import current_user, login_user, logout_user
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
-from jinja2 import Markup
 from markupsafe import Markup
 
 file_path = op.join(op.dirname(__file__), './static/files')
@@ -178,7 +177,7 @@ def logout():
 
 @app.route('/')
 def home():
-    return render_template("home.html", title="GAURAV SHILPAKAR", projects=db_projects(), instagram=getInstagram())
+    return render_template("home.html", title="GAURAV SHILPAKAR", projects=db_projects())
 
 
 @app.route('/contact/', methods=["POST", "GET"])
@@ -208,7 +207,6 @@ def contact():
         #          message=message)
         # db.session.add(u)
         # db.session.commit()
-
         # print(u.firstName)
         return redirect(url_for('home') + "#contact")
     else:
